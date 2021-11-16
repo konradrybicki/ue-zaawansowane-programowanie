@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
-import Customer
-import Product
+import src.ClientModule as cmd
+import src.Product as Product
 
 """ Defines order structure, that contains products and customer data within it """
 
 class Order:
     
     __id: int
-    __customer: Customer
+    __client: cmd.Client
     __products: [Product]
     
     @property
@@ -16,8 +16,8 @@ class Order:
         return self.__id
     
     @property
-    def getCustomer(self) -> Customer:
-        return self.__customer
+    def getClient(self) -> cmd.Client:
+        return self.__client
     
     @property
     def getProducts(self) -> [Product]:
@@ -27,9 +27,9 @@ class Order:
     def setId(self, value: int) -> None:
         self.__id = value
         
-    @customer.setter
-    def setCustomer(self, value: Customer) -> None:
-        self.__customer = value
+    @client.setter
+    def setClient(self, value: cmd.Client) -> None:
+        self.__client = value
         
     @products.setter
     def setProducts(self, value: [Product]) -> None:
