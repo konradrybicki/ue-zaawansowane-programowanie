@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import Product
+import src.Product as Product
 
 """ Defines a warehouse structure, which can contain products within it (static class) """
 
