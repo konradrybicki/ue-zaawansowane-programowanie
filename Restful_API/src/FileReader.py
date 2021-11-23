@@ -34,6 +34,8 @@ class FileReader:
         
         for row in reader:
             rows.append(row)
+        else:
+            rows.pop(0)
             
         f.close()
         
