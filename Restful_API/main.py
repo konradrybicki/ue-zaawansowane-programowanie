@@ -3,8 +3,13 @@
 from src.FileReader import FileReader
 from src.Movie import Movie
 
+# source file data read
+
 rows: [[str]] = FileReader.getRows()
-movies = []
+
+# read data modelling and serialization
+
+movies_json = []
 
 for row in rows:
     
@@ -13,7 +18,9 @@ for row in rows:
     genres = row[2]
     
     movie = Movie(id, title, genres)
-    movies.append(movie)
+    movies_json.append(movie.__dict__)
     
-for movie in movies:
-    print(movie.__dict__)
+# (print)
+
+for movie in movies_json:
+    print(movie)
