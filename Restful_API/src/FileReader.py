@@ -6,7 +6,7 @@ class FileReader:
     
     """ Is responsible for reading data from a source file (movies.csv) """
     
-    __sourceFilePath = '../movies.csv'
+    __sourceFilePath = r'C:\Moje pliki\Studia\II stopień\I sem\Programowanie\Laby\Restful_API\movies.csv'
     
     @classmethod
     def getHeader(cls) -> [str]:
