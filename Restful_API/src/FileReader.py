@@ -6,14 +6,14 @@ class FileReader:
     
     """ Is responsible for reading data from a source file (movies.csv) """
     
-    __sourceFilePath: '../movies.csv'
+    __sourceFilePath = '../movies.csv'
     
-    @staticmethod
-    def getHeader(self) -> []:
+    @classmethod
+    def getHeader(cls) -> [str]:
         
         """ Reads only the header from a source file """
         
-        f = open(self.__sourceFilePath)
+        f = open(cls.__sourceFilePath)
         
         reader = csv.reader(f)
         header = next(reader)
@@ -22,19 +22,19 @@ class FileReader:
         
         return header
     
-    @staticmethod
-    def getRows(self) -> [[]]:
+    @classmethod
+    def getRows(cls) -> [[str]]:
         
         """ Reads all the rows from a source file (excluding the header) """
         
-        f = open(self.__sourceFilePath)
+        f = open(cls.__sourceFilePath, encoding='utf8')
         
         reader = csv.reader(f)
-        container = []
+        rows = []
         
         for row in reader:
-            container.append(row)
+            rows.append(row)
             
         f.close()
         
-        return container
+        return rows
