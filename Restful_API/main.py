@@ -15,11 +15,11 @@ def getMovieData():
     
     for row in rows:
         
-        id = row[0]
-        title = row[1]
-        genres = row[2]
+        movieID: int = row[0]
+        title: str = row[1]
+        genres: str = row[2]
         
-        movie = Movie(id, title, genres)
+        movie = Movie(movieID, title, genres)
         movies_json.append(movie.__dict__)
     
     return movies_json
