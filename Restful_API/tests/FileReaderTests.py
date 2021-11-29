@@ -17,13 +17,55 @@ class FileReaderTests(unittest.TestCase):
         FileReader.sourceFilePath = movies_absolute
         
         # when
-        rows: [[str]] = FileReader.getRows()
+        movies: [[str]] = FileReader.getRows()
         
         # then
-        rowsEmpty: bool = not rows
-        self.assertFalse(rowsEmpty)
+        moviesEmpty: bool = not movies
+        self.assertFalse(moviesEmpty)
         
+    def testGetRows_links(self):
+        
+        links_relative = '../data/links.csv'
+        links_absolute = getAbsolutePathUsing(links_relative)
+        FileReader.sourceFilePath = links_absolute
+        
+        links: [[str]] = FileReader.getRows()
+        
+        linksEmpty: bool = not links
+        self.assertFalse(linksEmpty)
+        
+    def testGetRows_ratings(self):
+        
+        ratings_relative = '../data/ratings.csv'
+        ratings_absolute = getAbsolutePathUsing(ratings_relative)
+        FileReader.sourceFilePath = ratings_absolute
+        
+        ratings: [[str]] = FileReader.getRows()
+        
+        ratingsEmpty: bool = not ratings
+        self.assertFalse(ratingsEmpty)
+        
+    def testGetRows_tags(self):
+        
+        tags_relative = '../data/tags.csv'
+        tags_absolute = getAbsolutePathUsing(tags_relative)
+        FileReader.sourceFilePath = tags_absolute
+        
+        tags: [[str]] = FileReader.getRows()
+        
+        tagsEmpty: bool = not tags
+        self.assertFalse(tagsEmpty)
+        
+    # boundary conditions - failure
     
+    def testGetRows_wrongPath(self):
+        
+        # given
+        FileReader.sourceFilePath = "x"
+        
+        # when, then
+        getRows = FileReader.getRows
+        self.assertRaises(Exception, getRows, None, None)
 
 #%% helper method
 
