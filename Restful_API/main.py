@@ -1,13 +1,32 @@
-#%% Movie data gathering
+# -*- coding: utf-8 -*-
+
+#%% flask app initialization
+
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route("/movies")
+def getMovies():
+    movies = getMovieData()
+    return jsonify(movies)
+
+#%% helper methods
 
 from src.FileReader import FileReader
-from src.Movie import Movie
+import src.Data
+
+from tests.FileReaderTests import getAbsolutePathUsing
 
 def getMovieData():
     
     # source file data read
-
-    rows: [[str]] = FileReader.getRows()
+    
+    movies_relative = "data/movies.csv"
+    movies_absolute = getAbsolutePathUsing(movies_relative)
+    
+    FileReader.sourceFilePath = movies_absolute
+    movies: [[str]] = FileReader.getRows()
     
     # read data modelling and serialization
     
@@ -24,14 +43,5 @@ def getMovieData():
     
     return movies_json
     
-#%% Flask app initialization
 
-from flask import Flask, jsonify
-
-app = Flask(__name__)
-
-@app.route("/movies")
-def getMovies():
-    movies = getMovieData()
-    return jsonify(movies)
 
