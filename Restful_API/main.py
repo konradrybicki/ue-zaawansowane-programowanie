@@ -34,3 +34,4 @@ app = Flask(__name__)
 def getMovies():
     movies = getMovieData()
     return jsonify(movies)
+
