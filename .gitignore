@@ -1,0 +1,10 @@
+
+# venv / dependencies related files
+.venv/
+Pipfile*
+
+# Spyder files
+/Restful_API/.spyproject/
+
+# cache files
+__pycache__/
