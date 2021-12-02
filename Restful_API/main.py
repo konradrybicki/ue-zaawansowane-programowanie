@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#%% JSON type alias
-
-from typing import NewType
-json = NewType("json", dict)
-
-#%% flask app initialization
+#%% Flask app initialization
 
 from flask import Flask, jsonify
 
@@ -16,12 +11,26 @@ def getMovies():
     movies: [json] = getJsonData_movies()
     return jsonify(movies)
 
-#%% data gathering methods
+@app.route("/links")
+def getLinks():
+    links: [json] = getJsonData_links()
+    return jsonify(links)
+
+@app.route("/ratings")
+def getRatings():
+    ratings: [json] = getJsonData_ratings()
+    return jsonify(ratings)
+
+@app.route("/tags")
+def getTags():
+    tags: [json] = getJsonData_tags()
+    return jsonify(tags)
+
+#%% Data gathering methods
 
 from src.FileReader import FileReader
 from src.Data import Movie, Link, Rating, Tag
 
-# (helper method)
 from tests.FileReaderTests import getAbsolutePathUsing
 
 def getJsonData_movies():
@@ -113,3 +122,8 @@ def getJsonData_tags():
         tags_json.append(tag.__dict__)
     
     return tags_json
+
+#%% JSON type alias (dict)
+
+from typing import NewType
+json = NewType("json", dict)
