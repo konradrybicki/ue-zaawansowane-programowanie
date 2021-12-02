@@ -31,13 +31,11 @@ def getTags():
 from src.FileReader import FileReader
 from src.Data import Movie, Link, Rating, Tag
 
-from tests.FileReaderTests import getAbsolutePathUsing
-
 def getJsonData_movies():
     
     # source file data reading
     
-    movies_relative = "data/movies.csv"
+    movies_relative = "./data/movies.csv"
     movies_absolute = getAbsolutePathUsing(movies_relative)
     
     FileReader.sourceFilePath = movies_absolute
@@ -122,6 +120,17 @@ def getJsonData_tags():
         tags_json.append(tag.__dict__)
     
     return tags_json
+
+#%% Helper method
+
+import os
+
+def getAbsolutePathUsing(pathRelativeToCurrentFile: str) -> str:
+    
+    dirname = os.path.dirname(__file__)
+    filename = os.path.join(dirname, pathRelativeToCurrentFile)
+    
+    return filename
 
 #%% JSON type alias (dict)
 
