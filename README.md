@@ -1,1 +1,2 @@
-# ue-zaawansowane-programowanie
+# A repository dedicated to "Advanced programming" Python classes.
+## To anyone visiting this repository in purpose of professional activity reconaissance - I encourage You to take a look at the "lab_7" branch, as it's the most current, relevant and robust project on this repository.
